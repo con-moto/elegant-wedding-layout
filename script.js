@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== INTRO-SCREEN + MUSIC =====
+  // ===== INTRO-SCREEN + MUSIC =====
   const intro = document.querySelector('.intro-screen');
+  const introHint = document.querySelector('.intro-tap-hint');
   const bgMusic = document.getElementById('bg-music');
 
   if (intro) {
@@ -8,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
       intro.classList.add('card-out');
     }, 400);
 
-    intro.addEventListener('click', () => {
-      // запускаем музыку по клику по интро
+    const handleIntroClick = () => {
+      // запускаем музыку по явному клику
       if (bgMusic) {
         bgMusic
           .play()
@@ -28,7 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { once: true }
       );
-    });
+    };
+
+    // если есть блок-подсказка — вешаем обработчик на него
+    if (introHint) {
+      introHint.addEventListener('click', handleIntroClick);
+    } else {
+      intro.addEventListener('click', handleIntroClick);
+    }
   }
 
   // ===== COUNTDOWN =====
