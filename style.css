@@ -739,7 +739,6 @@ body {
 .video-line {
   position: relative;
   overflow: hidden;
-  margin-top: 3rem; /* НОВОЕ: создаём расстояние от Guest Form */
 }
 
 .video-line__video {
