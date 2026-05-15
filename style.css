@@ -134,6 +134,24 @@ body {
   border: none;
 }
 
+
+.intro-music-btn {
+  margin-top: 4px;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.25); /* полупрозрачный кружок */
+  cursor: pointer;
+  opacity: 0.3;
+  text-indent: -9999px; /* прячет текст "включить музыку" */
+  overflow: hidden;
+}
+
+.intro-music-btn:hover {
+  opacity: 0.6;
+}
 /* скрытие подсказки и экрана */
 
 .intro-screen.hide-hint .intro-tap-hint {

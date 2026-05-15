@@ -1,16 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
   // ===== INTRO-SCREEN + MUSIC =====
   const intro = document.querySelector('.intro-screen');
-  const introHint = document.querySelector('.intro-tap-hint');
+  const musicBtn = document.querySelector('.intro-music-btn');
   const bgMusic = document.getElementById('bg-music');
+
+  const closeIntro = () => {
+    if (!intro) return;
+    intro.classList.add('hide-hint');
+    intro.classList.add('is-hidden');
+
+    intro.addEventListener(
+      'transitionend',
+      () => {
+        intro.style.display = 'none';
+      },
+      { once: true }
+    );
+  };
 
   if (intro) {
     setTimeout(() => {
       intro.classList.add('card-out');
     }, 400);
+  }
 
-    const handleIntroClick = () => {
-      // запускаем музыку по явному клику
+  if (musicBtn) {
+    musicBtn.addEventListener('click', () => {
       if (bgMusic) {
         bgMusic
           .play()
@@ -18,27 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('Музыка не смогла стартовать автоматически:', err);
           });
       }
-
-      intro.classList.add('hide-hint');
-      intro.classList.add('is-hidden');
-
-      intro.addEventListener(
-        'transitionend',
-        () => {
-          intro.style.display = 'none';
-        },
-        { once: true }
-      );
-    };
-
-    // если есть блок-подсказка — вешаем обработчик на него
-    if (introHint) {
-      introHint.addEventListener('click', handleIntroClick);
-    } else {
-      intro.addEventListener('click', handleIntroClick);
-    }
+      closeIntro();
+    });
+  } else if (intro) {
+    // запасной вариант: если кнопка по какой-то причине не отрисуется
+    intro.addEventListener('click', () => {
+      if (bgMusic) {
+        bgMusic
+          .play()
+          .catch((err) => {
+            console.warn('Музыка не смогла стартовать автоматически:', err);
+          });
+      }
+      closeIntro();
+    });
   }
-
+  
   // ===== COUNTDOWN =====
   // 19 сентября 2026, 12:00, часовой пояс +03:00
   const targetDate = new Date('2026-09-19T12:00:00+03:00').getTime();
