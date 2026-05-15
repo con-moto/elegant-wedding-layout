@@ -1474,6 +1474,7 @@ body {
   .section--location,
   .section--celebration,
   .section--timing-custom,
+  .section--guest-form,
   .section--hotels {
     padding-block: 100px;
   }
@@ -1481,6 +1482,7 @@ body {
   .section--location .section-title-large,
   .section--celebration .section-title-large,
   .section--timing-custom .section-title-large,
+  .section--guest-form .section-title-large,
   .section--hotels .section-title-large {
     font-size: 8vh;
   }
@@ -1490,6 +1492,7 @@ body {
   .section--location,
   .section--celebration,
   .section--timing-custom,
+  .section--guest-form,
   .section--hotels {
     padding-block: 80px;
   }
@@ -1497,6 +1500,7 @@ body {
   .section--location .section-title-large,
   .section--celebration .section-title-large,
   .section--timing-custom .section-title-large,
+  .section--guest-form .section-title-large,
   .section--hotels .section-title-large {
     font-size: 7vh;
   }
@@ -1514,6 +1518,7 @@ body {
   .section--location,
   .section--celebration,
   .section--timing-custom,
+  .section--guest-form,
   .section--hotels {
     padding-block: 70px;
   }
@@ -1521,10 +1526,12 @@ body {
   .section--location .section-title-large,
   .section--celebration .section-title-large,
   .section--timing-custom .section-title-large,
+  .section--guest-form .section-title-large,
   .section--hotels .section-title-large {
     font-size: 6vh;
   }
 }
+
 /* твой пункт 3 — заголовок HOTELS без сдвига с 650 и меньше */
 @media (max-width: 650px) {
   .section-title-large--hotels {
