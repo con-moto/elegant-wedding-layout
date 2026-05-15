@@ -952,10 +952,18 @@ body {
 
 /* ===== GUEST FORM ===== */
 
+/* Чуть больше воздуха снизу у Guest Form */
 .section--guest-form {
   background: #ecdcc8;
   text-align: center;
-  padding: 7.5rem 1.25rem 8.75rem;
+  padding: 7.5rem 1.25rem 9.5rem; /* было 8.75rem, добавили чуть-чуть */
+}
+
+/* Добавим явный отступ сверху перед WISHES */
+.video-line {
+  position: relative;
+  overflow: hidden;
+  margin-top: 3rem; /* НОВОЕ: создаём расстояние от Guest Form */
 }
 
 .guest-inner {

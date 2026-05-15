@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // ВСТАВЬ сюда URL своего Vercel backend (API endpoint)
-      const BACKEND_URL = 'https://YOUR_VERCEL_PROJECT_URL.vercel.app/api/send';
+      const BACKEND_URL = 'https://wedding-yulia-francesco-backend.vercel.app/api/send';
 
       fetch(BACKEND_URL, {
         method: 'POST',
