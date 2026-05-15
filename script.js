@@ -1,4 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // ===== SCROLL REVEAL (SECTIONS) =====
+  const initScrollReveal = () => {
+    const revealSections = document.querySelectorAll(
+      '.hero, .intro-text-block, .section--calendar, .section--location, .section--celebration, .section--countdown, .section--timing-custom, .section--guest-form, .section--hotels'
+    );
+
+    if (!revealSections.length) return;
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.25, // примерно четверть секции в кадре
+        }
+      );
+
+      revealSections.forEach((sec) => revealObserver.observe(sec));
+    } else {
+      // fallback: если нет IntersectionObserver, просто показываем всё
+      revealSections.forEach((sec) => sec.classList.add('is-visible'));
+    }
+  };
+
+  const startPageAnimations = () => {
+    initScrollReveal();
+  };
+
   // ===== INTRO-SCREEN + MUSIC =====
   const intro = document.querySelector('.intro-screen');
   const introHint = document.querySelector('.intro-tap-hint');
@@ -10,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
 
     const handleIntroClick = () => {
-      // запускаем музыку по явному клику
       if (bgMusic) {
         bgMusic
           .play()
@@ -26,17 +60,25 @@ document.addEventListener('DOMContentLoaded', () => {
         'transitionend',
         () => {
           intro.style.display = 'none';
+          // небольшая пауза перед стартом scroll-анимаций,
+          // чтобы успеть начать скроллить
+          setTimeout(() => {
+            startPageAnimations();
+          }, 700);
         },
         { once: true }
       );
     };
 
-    // если есть блок-подсказка — вешаем обработчик на него
+    // клик по надписи/подсказке
     if (introHint) {
       introHint.addEventListener('click', handleIntroClick);
-    } else {
-      intro.addEventListener('click', handleIntroClick);
     }
+    // и клик по любой точке интро-экрана
+    intro.addEventListener('click', handleIntroClick);
+  } else {
+    // если интро нет — сразу запускаем анимации
+    startPageAnimations();
   }
 
   // ===== COUNTDOWN =====
@@ -101,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== CALENDAR TEXT ANIMATION =====
+  // ===== CALENDAR TEXT ANIMATION (отдельный Observer под .section--calendar) =====
   const calendarSection = document.querySelector('.section--calendar');
 
   if (calendarSection && 'IntersectionObserver' in window) {
@@ -121,6 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     observer.observe(calendarSection);
+  } else if (calendarSection) {
+    calendarSection.classList.add('is-visible');
   }
 
   // ===== GUEST FORM: отправка на Vercel backend =====
@@ -155,7 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
         event: 'Wedding 19.09.2026',
       };
 
-      const BACKEND_URL = 'https://wedding-yulia-francesco-backend.vercel.app/api/send';
+      const BACKEND_URL =
+        'https://wedding-yulia-francesco-backend.vercel.app/api/send';
 
       fetch(BACKEND_URL, {
         method: 'POST',
@@ -167,7 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((res) => res.json())
         .then((data) => {
           if (data && data.success) {
-            statusEl.textContent = data.message || 'Спасибо! Форма отправлена.';
+            statusEl.textContent =
+              data.message || 'Спасибо! Форма отправлена.';
             guestForm.reset();
           } else {
             statusEl.textContent =

@@ -6,6 +6,7 @@
   --text-main: #202020;
 }
 
+
 /* Сброс */
 *,
 *::before,
@@ -13,13 +14,16 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   background: var(--bg-main);
   color: var(--text-main);
 }
 
+
 /* ===== INTRO-SCREEN (DESKTOP) ===== */
+
 
 .intro-screen {
   position: fixed;
@@ -35,6 +39,7 @@ body {
   transition: opacity 0.6s ease;
 }
 
+
 .intro-bg {
   position: absolute;
   inset: 0;
@@ -45,6 +50,7 @@ body {
   filter: blur(0.5px);
 }
 
+
 .intro-screen::before {
   content: "";
   position: absolute;
@@ -52,7 +58,9 @@ body {
   background: rgba(0, 0, 0, 0.15);
 }
 
+
 /* конверт */
+
 
 .intro-envelope {
   position: relative;
@@ -60,12 +68,15 @@ body {
   transform: translateX(40px) translateY(100px);
 }
 
+
 .intro-envelope-img {
   display: block;
   width: 100%;
 }
 
+
 /* передняя часть конверта поверх всего */
+
 
 .intro-envelope-front {
   position: absolute;
@@ -77,7 +88,9 @@ body {
   pointer-events: none;
 }
 
+
 /* карточка */
+
 
 .intro-card {
   position: absolute;
@@ -91,18 +104,23 @@ body {
   pointer-events: none;
 }
 
+
 .intro-card-img {
   display: block;
   width: 100%;
 }
 
+
 /* выезд вверх: видно верхнюю половину */
+
 
 .intro-screen.card-out .intro-card {
   transform: translateY(20%);
 }
 
+
 /* подсказка */
+
 
 .intro-tap-hint {
   position: absolute;
@@ -116,6 +134,7 @@ body {
   z-index: 4;
 }
 
+
 .intro-tap-text {
   white-space: nowrap;
   font-family: "Bebas Neue", sans-serif;
@@ -123,6 +142,7 @@ body {
   letter-spacing: 0.2em;
   color: #ffffff;
 }
+
 
 .intro-hand-icon {
   width: 50px;
@@ -134,26 +154,33 @@ body {
   border: none;
 }
 
+
 /* скрытие подсказки и экрана */
+
 
 .intro-screen.hide-hint .intro-tap-hint {
   opacity: 0;
   pointer-events: none;
 }
 
+
 .intro-screen.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
+
 /* ===== ОСНОВНОЙ САЙТ ===== */
+
 
 .page {
   min-height: 100vh;
   overflow: hidden;
 }
 
+
 /* ===== HERO ===== */
+
 
 .hero {
   background: url("./images/cover-background.jpg") center/cover no-repeat;
@@ -161,11 +188,13 @@ body {
   max-block-size: 100vh;
 }
 
+
 .hero-inner {
   max-width: 70%;
   margin: 0 auto;
   text-align: center;
 }
+
 
 .hero-title-top {
   margin: 0 0 7vh;
@@ -175,6 +204,7 @@ body {
   font-weight: 400;
 }
 
+
 .hero-row {
   display: grid;
   grid-template-columns: 1.2fr auto 1.2fr;
@@ -183,6 +213,7 @@ body {
   margin-bottom: 4vh;
 }
 
+
 .hero-photo {
   position: relative;
   box-shadow: 0 1.6vh 4vh rgba(0, 0, 0, 0.2);
@@ -190,13 +221,16 @@ body {
   margin: 0 auto;
 }
 
+
 .hero-photo-left {
   transform: rotate(-11deg) translateY(-12%);
 }
 
+
 .hero-photo-right {
   transform: rotate(11deg) translateY(8%);
 }
+
 
 .hero-photo img {
   display: block;
@@ -205,9 +239,11 @@ body {
   height: auto;
 }
 
+
 .hero-photo-caption {
   display: none;
 }
+
 
 .hero-date {
   display: flex;
@@ -218,6 +254,7 @@ body {
   letter-spacing: 0.24em;
 }
 
+
 .hero-names {
   margin: 0;
   margin-top: 8vh;
@@ -227,10 +264,12 @@ body {
   letter-spacing: 0.35em;
 }
 
+
 .hero-amp {
   font-family: "Elven Common Speak", cursive;
   font-weight: 400;
 }
+
 
 .hero-decor-line img {
   display: block;
@@ -239,7 +278,118 @@ body {
   width: 100%;
 }
 
+
+/* HERO reveal initial */
+.hero {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+
+.hero-inner > * {
+  opacity: 0;
+}
+
+
+.hero-title-top {
+  transform: translateY(-50px);
+}
+
+
+.hero-photo-left {
+  transform: rotate(-11deg) translate(-60%, -20%);
+}
+
+
+.hero-photo-right {
+  transform: rotate(11deg) translate(60%, 16%);
+}
+
+
+.hero-date span:nth-child(1) {
+  transform: translate(-60px, -60px);
+  opacity: 0;
+}
+
+
+.hero-date span:nth-child(2) {
+  transform: translate(60px, -60px);
+  opacity: 0;
+}
+
+
+.hero-date span:nth-child(3) {
+  transform: translate(60px, 60px);
+  opacity: 0;
+}
+
+
+.hero-names {
+  transform: translateY(60px);
+}
+
+
+.hero-decor-line {
+  transform: translateY(40px);
+}
+
+
+/* when visible */
+
+
+.hero.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.hero.is-visible .hero-inner > * {
+  opacity: 1;
+}
+
+
+.hero.is-visible .hero-title-top,
+.hero.is-visible .hero-photo-left,
+.hero.is-visible .hero-photo-right,
+.hero.is-visible .hero-names,
+.hero.is-visible .hero-decor-line {
+  transform: translateY(0);
+  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+}
+
+
+.hero.is-visible .hero-photo-left {
+  transform: rotate(-11deg) translateY(-12%);
+}
+
+
+.hero.is-visible .hero-photo-right {
+  transform: rotate(11deg) translateY(8%);
+}
+
+
+.hero.is-visible .hero-date span:nth-child(1),
+.hero.is-visible .hero-date span:nth-child(2),
+.hero.is-visible .hero-date span:nth-child(3) {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+
+.hero.is-visible .hero-date span:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+
+.hero.is-visible .hero-date span:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+
 /* ===== INTRO TEXT BLOCK ===== */
+
 
 .intro-text-block {
   position: relative;
@@ -247,11 +397,13 @@ body {
   padding: 150px 20px;
 }
 
+
 .intro-text-inner {
   max-width: 65%;
   margin: 0 auto;
   text-align: center;
 }
+
 
 .intro-small-title {
   display: inline-block;
@@ -265,6 +417,7 @@ body {
   border-bottom: 1px solid #000;
 }
 
+
 .intro-main-text {
   max-width: 100%;
   margin: 0 auto 24px;
@@ -275,6 +428,7 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
 
 .intro-reply-btn {
   display: inline-flex;
@@ -294,12 +448,28 @@ body {
   transition: all 0.3s ease;
 }
 
+
 .intro-reply-btn:hover {
   opacity: 0.7;
   transform: translateY(-2px);
 }
 
+
+.intro-text-block .intro-reply-btn {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+  transition-delay: 0.5s;
+}
+
+.intro-text-block.is-visible .intro-reply-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
 /* ===== ФОТО-БЛОК С ПСЕВДОЭЛЕМЕНТАМИ ===== */
+
 
 .intro-photos-row {
   position: relative;
@@ -309,6 +479,7 @@ body {
   padding: 90px 40px 0;
 }
 
+
 .intro-main-photo {
   position: relative;
   max-width: 40%;
@@ -317,6 +488,7 @@ body {
   object-fit: cover;
   margin: 0 auto;
 }
+
 
 .intro-photos-row::before,
 .intro-photos-row::after {
@@ -333,10 +505,12 @@ body {
   pointer-events: none;
 }
 
+
 .intro-photos-row::before {
   left: -8%;
   background-image: url("./images/pseudo-left.jpg");
 }
+
 
 .intro-photos-row::after {
   right: -8%;
@@ -344,7 +518,44 @@ body {
 }
 
 
+.intro-text-block {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+
+.intro-text-block .intro-photos-row::before {
+  transform: translate(-80%, -50%);
+  opacity: 0;
+  transition: transform 1.6s ease-out, opacity 1.6s ease-out;
+  transition-delay: 0.25s; /* сначала текст, потом левая картинка */
+}
+
+
+.intro-text-block .intro-photos-row::after {
+  transform: translate(80%, -50%);
+  opacity: 0;
+  transition: transform 1.6s ease-out, opacity 1.6s ease-out;
+  transition-delay: 0.35s; /* правая чуть позже */
+}
+
+
+.intro-text-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.intro-text-block.is-visible .intro-photos-row::before,
+.intro-text-block.is-visible .intro-photos-row::after {
+  opacity: 0.95;
+  transform: translateY(-50%);
+}
+
+
 /* ===== ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ ===== */
+
 
 .section-divider-line {
   width: 1px;
@@ -353,10 +564,12 @@ body {
   margin: 0 auto 40px;
 }
 
+
 .section__inner {
   max-width: 90%;
   margin: 0 auto;
 }
+
 
 .section-title-large {
   margin: 0 0 26px;
@@ -366,6 +579,26 @@ body {
   letter-spacing: 0.2em;
   text-align: center;
 }
+
+
+/* заголовки секций: анимация сверху вниз (NEW) */
+.section-title-large {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.hero.is-visible .section-title-large,
+.section--calendar.is-visible .section-title-large,
+.section--location.is-visible .section-title-large,
+.section--celebration.is-visible .section-title-large,
+.section--timing-custom.is-visible .section-title-large,
+.section--guest-form.is-visible .section-title-large,
+.section--hotels.is-visible .section-title-large {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .section-text-bebas {
   max-width: 540px;
@@ -379,7 +612,9 @@ body {
   text-align: center;
 }
 
+
 /* ===== CALENDAR (IMAGE + TEXT, <=100vh) ===== */
+
 
 .section--calendar {
   position: relative;
@@ -393,12 +628,14 @@ body {
   overflow: hidden;
 }
 
+
 .calendar-bg {
   position: absolute;
   inset: 0;
   background: url("./images/calendar-background.jpg") center/cover no-repeat;
   opacity: 0.9;
 }
+
 
 .calendar-outer {
   position: relative;
@@ -408,17 +645,22 @@ body {
   width: 100%;
 }
 
+
 .calendar-image-wrap {
   position: relative;
   width: min(80vw, 28rem);
   margin: 0 auto;
 }
 
+
 .calendar-image {
   display: block;
   width: 100%;
   height: auto;
+  filter: brightness(94%);
+  opacity: 0.87;     
 }
+
 
 .calendar-heading {
   position: absolute;
@@ -433,11 +675,13 @@ body {
   white-space: nowrap;
 }
 
+
 .calendar-heading-top {
   top: 4%;
   opacity: 0;
   transform: translate(-50%, 0) translateX(-30%);
 }
+
 
 .calendar-heading-bottom {
   bottom: 4%;
@@ -445,31 +689,59 @@ body {
   transform: translate(-50%, 0) translateX(30%);
 }
 
+
+.section--calendar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+
+.section--calendar.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .section--calendar.is-visible .calendar-heading-top {
   opacity: 1;
   transform: translate(-50%, 0);
-  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
+
 
 .section--calendar.is-visible .calendar-heading-bottom {
   opacity: 1;
   transform: translate(-50%, 0);
-  transition: opacity 0.45s ease-out 0.08s, transform 0.45s ease-out 0.08s;
+  transition: opacity 1.3s ease-out 0.2s, transform 1.3s ease-out 0.2s;
 }
 
+
 /* ===== LOCATION ===== */
+
 
 .section--location {
   background: #fcf7f0;
   text-align: center;
   padding: 120px 20px 70px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
+
+
+.section--location.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .location-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 
 .location-mistral {
   display: block;
@@ -481,17 +753,21 @@ body {
   text-transform: none;
 }
 
+
 /* фото + кружок */
+
 
 .location-photo-wrap {
   position: relative;
   width: 100%;
 }
 
+
 .location-photo {
   display: block;
   width: 100%;
 }
+
 
 .location-howto {
   position: absolute;
@@ -513,7 +789,21 @@ body {
   text-align: center;
   text-decoration: none;
   color: #000;
+  z-index: 5;
 }
+
+/* HOW TO entrance: справа налево (NEW) */
+.location-howto {
+  transform: translateX(40px);
+  opacity: 0;
+  transition: transform 1.1s ease-out, opacity 1.1s ease-out;
+}
+
+.section--location.is-visible .location-howto {
+  transform: translateX(0);
+  opacity: 1;
+}
+
 
 .location-howto::after {
   content: "";
@@ -522,6 +812,7 @@ body {
   background: #000;
 }
 
+
 .location-howto:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
@@ -529,29 +820,56 @@ body {
   opacity: 0.96;
 }
 
+
+/* ===== CELEBRATION ===== */
+
 /* ===== CELEBRATION ===== */
 
 .section--celebration {
   background: #fcf7f0;
   text-align: center;
   padding: 0 20px 140px;
+  /* секция статична, без анимации положения */
+  opacity: 1;
+  transform: none;
 }
+
+/* внутренний контент — мягкое появление снизу */
+.section--celebration .celebration-inner {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.section--celebration.is-visible .celebration-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ВАЖНО: этот блок можно удалить или оставить пустым, но без transform/opacity */
+.section--celebration.is-visible {
+  /* ничего не анимируем у самой секции */
+}
+
 
 .celebration-inner {
   max-width: 90%;
   margin: 0 auto;
 }
 
+
 .celebration-photo-desktop {
   width: 100%;
   margin: 0 auto;
 }
+
 
 .celebration-photo {
   display: block;
   width: 100%;
   height: auto;
 }
+
 
 .celebration-photo-mobile {
   display: none;
@@ -560,13 +878,16 @@ body {
   gap: 8px;
 }
 
+
 .celebration-photo-sm {
   display: block;
   width: 100%;
   height: auto;
 }
 
+
 /* кнопка "на карте" как intro-reply-btn */
+
 
 .celebration-map-btn {
   display: inline-flex;
@@ -586,19 +907,37 @@ body {
   transition: all 0.3s ease;
 }
 
+/* entrance animation for celebration button */
+.section--celebration .celebration-map-btn {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+  transition-delay: 0.4s;
+}
+
+.section--celebration.is-visible .celebration-map-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .celebration-map-btn:hover {
   opacity: 0.7;
   transform: translateY(-2px);
 }
 
+
 /* ===== TIMING ===== */
+
 
 .section--timing-custom {
   position: relative;
   padding: 150px 20px 160px;
   text-align: center;
   overflow: hidden;
+  /* секция НЕ двигается, остаётся статичной */
 }
+
+/* Заголовок и линии уже анимируются через .section-title-large */
 
 .section--timing-custom::after {
   content: "";
@@ -609,6 +948,7 @@ body {
   z-index: -2;
 }
 
+
 .timing-bg {
   position: absolute;
   inset: 0;
@@ -616,6 +956,7 @@ body {
   opacity: 0.96;
   z-index: -1;
 }
+
 
 .timing-inner {
   max-width: 80%;
@@ -625,6 +966,7 @@ body {
   align-items: center;
 }
 
+
 .timing-list {
   margin-top: 30px;
   display: flex;
@@ -633,12 +975,69 @@ body {
   align-items: center;
 }
 
+
 .timing-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
 }
+
+/* TIMING items: шахматный порядок (UPDATED) */
+.section--timing-custom .timing-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.3s ease-out, transform 1.3s ease-out;
+}
+
+.section--timing-custom.is-visible .timing-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 1 - снизу вверх, 2 - справа, 3 - слева, 4 - снизу */
+.section--timing-custom .timing-item:nth-child(1) {
+  transform: translateY(30px);
+}
+.section--timing-custom.is-visible .timing-item:nth-child(1) {
+  transform: translateY(0);
+}
+
+.section--timing-custom .timing-item:nth-child(2) {
+  transform: translateX(40px);
+}
+.section--timing-custom.is-visible .timing-item:nth-child(2) {
+  transform: translateX(0);
+}
+
+.section--timing-custom .timing-item:nth-child(3) {
+  transform: translateX(-40px);
+}
+.section--timing-custom.is-visible .timing-item:nth-child(3) {
+  transform: translateX(0);
+}
+
+.section--timing-custom .timing-item:nth-child(4) {
+  transform: translateY(40px);
+}
+.section--timing-custom.is-visible .timing-item:nth-child(4) {
+  transform: translateY(0);
+}
+
+/* ступенчатость по времени — можно оставить как есть */
+.section--timing-custom.is-visible .timing-item:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.section--timing-custom.is-visible .timing-item:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.section--timing-custom.is-visible .timing-item:nth-child(3) {
+  transition-delay: 0.25s;
+}
+.section--timing-custom.is-visible .timing-item:nth-child(4) {
+  transition-delay: 0.35s;
+}
+
 
 .timing-icon {
   width: 96px;
@@ -648,10 +1047,12 @@ body {
   background-position: center;
 }
 
+
 .timing-icon--rings  { background-image: url("./images/1.png"); }
 .timing-icon--dinner { background-image: url("./images/2.png"); }
 .timing-icon--cake   { background-image: url("./images/3.png"); }
 .timing-icon--party  { background-image: url("./images/4.png"); }
+
 
 .timing-caption {
   margin: 0;
@@ -663,7 +1064,9 @@ body {
   text-transform: uppercase;
 }
 
+
 /* ===== COUNTDOWN ===== */
+
 
 .section--countdown {
   position: relative;
@@ -674,7 +1077,17 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
+
+
+.section--countdown.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .countdown-overlay {
   position: relative;
@@ -687,10 +1100,12 @@ body {
   justify-content: center;
 }
 
+
 .countdown-inner {
   max-width: 720px;
   margin: 0 auto;
 }
+
 
 .countdown-label {
   margin: 0 0 24px;
@@ -701,12 +1116,14 @@ body {
   color: #fff;
 }
 
+
 .countdown-grid {
   display: flex;
   justify-content: center;
   gap: 18px;
   flex-wrap: wrap;
 }
+
 
 .countdown-item {
   min-width: 100px;
@@ -715,6 +1132,29 @@ body {
   background: rgba(0, 0, 0, 0.35);
 }
 
+/* countdown items: по очереди (NEW, мягко) */
+.section--countdown .countdown-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.section--countdown.is-visible .countdown-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section--countdown.is-visible .countdown-item:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.section--countdown.is-visible .countdown-item:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.section--countdown.is-visible .countdown-item:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+
 .countdown-number {
   display: block;
   font-family: "Bebas Neue", system-ui, sans-serif;
@@ -722,6 +1162,7 @@ body {
   letter-spacing: 0.18em;
   color: #fff;
 }
+
 
 .countdown-unit {
   display: block;
@@ -733,13 +1174,16 @@ body {
   color: rgba(255, 255, 255, 0.85);
 }
 
+
 /* ===== WISHES (VIDEO LINE) ===== */
+
 
 /* Добавим явный отступ сверху перед WISHES */
 .video-line {
   position: relative;
   overflow: hidden;
 }
+
 
 .video-line__video {
   width: 100%;
@@ -748,11 +1192,13 @@ body {
   display: block;
 }
 
+
 .video-line__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
 }
+
 
 .video-line__inner {
   position: absolute;
@@ -764,10 +1210,12 @@ body {
   justify-content: center;
 }
 
+
 .video-line__title {
   color: #fff;
   margin-bottom: 2.5rem;
 }
+
 
 .notes {
   display: flex;
@@ -776,11 +1224,13 @@ body {
   max-width: 45rem;
 }
 
+
 .note {
   display: flex;
   gap: 1.1rem;
   align-items: flex-start;
 }
+
 
 .note-number {
   width: 3rem;
@@ -797,6 +1247,7 @@ body {
   justify-content: center;
 }
 
+
 .note-text {
   color: #fff;
   text-align: left;
@@ -809,12 +1260,14 @@ body {
   margin: 0;
 }
 
+
 .payment-block {
   margin-top: 1rem;
   padding: 1rem 1.1rem;
   border: 0.06rem solid rgba(255, 255, 255, 0.6);
   background: rgba(0, 0, 0, 0.35);
 }
+
 
 .payment-text {
   margin: 0 0 0.3rem;
@@ -826,6 +1279,7 @@ body {
   text-transform: uppercase;
   color: #fff;
 }
+
 
 .payment-copy {
   display: inline-flex;
@@ -843,26 +1297,13 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+
 .payment-copy:hover {
   opacity: 0.75;
   transform: translateY(-0.06rem);
 }
 
 
-/* обёртка для линии и заголовка, чтобы они были по одной оси */
-.section-header-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.section-header-center .section-divider-line {
-  margin-bottom: 26px;
-}
-
-.section-header-center .section-title-large {
-  margin-bottom: 26px;
-}
 
 /* обёртка для линии и заголовка, чтобы они были по одной оси */
 .section-header-center {
@@ -871,26 +1312,59 @@ body {
   align-items: center;
 }
 
+
 .section-header-center .section-divider-line {
   margin-bottom: 26px;
 }
 
+
 .section-header-center .section-title-large {
   margin-bottom: 26px;
 }
+
+
+/* обёртка для линии и заголовка, чтобы они были по одной оси */
+.section-header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.section-header-center .section-divider-line {
+  margin-bottom: 26px;
+}
+
+
+.section-header-center .section-title-large {
+  margin-bottom: 26px;
+}
+
 
 /* ===== HOTELS ===== */
+
 
 /* только для заголовка Hotels — лёгкий сдвиг влево */
 .section-title-large--hotels {
   transform: translateX(-2.4rem);
 }
 
+
 .section--hotels {
   background: #fcf7f0;
   text-align: center;
   padding: 7.5rem 1.25rem 7.5rem;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
+
+
+.section--hotels.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .hotels-inner {
   display: flex;
@@ -898,10 +1372,12 @@ body {
   align-items: center;
 }
 
+
 .hotels-intro {
   font-size: clamp(1.3rem, 1.6vw, 1.6rem);
   margin-bottom: 2.5rem;
 }
+
 
 .hotels-content {
   display: flex;
@@ -910,10 +1386,12 @@ body {
   align-items: center;
 }
 
+
 .hotels-text {
   max-width: 540px;
   text-align: left;
 }
+
 
 /* маркированный список — вместо длинных тире в тексте */
 .hotels-list {
@@ -921,6 +1399,7 @@ body {
   padding-left: 1.2em;
   list-style-type: "— ";
 }
+
 
 .hotels-list li {
   margin: 0 0 0.5rem;
@@ -932,16 +1411,20 @@ body {
   text-transform: uppercase;
 }
 
+
 /* картинка + подпись под ней */
+
 
 .hotels-photo-wrap {
   width: 100%;
 }
 
+
 .hotels-photo {
   display: block;
   width: 100%;
 }
+
 
 .hotels-photo-caption {
   margin-top: 3.2rem; /* воздух от картинки */
@@ -951,13 +1434,38 @@ body {
   text-align: center;
 }
 
+
 /* ===== GUEST FORM ===== */
+
 
 /* Чуть больше воздуха снизу у Guest Form */
 .section--guest-form {
   background: #ecdcc8;
   text-align: center;
-  padding: 7.5rem 1.25rem 9.5rem; /* было 8.75rem, добавили чуть-чуть */
+  padding: 7.5rem 1.25rem 9.5rem;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.1s ease-out, transform 1.1s ease-out;
+}
+
+
+.section--guest-form.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.section--guest-form .guest-form {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  transition-delay: 0.15s;
+}
+
+
+.section--guest-form.is-visible .guest-form {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
@@ -966,6 +1474,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 
 .guest-form {
   width: 100%;
@@ -977,20 +1486,24 @@ body {
   backdrop-filter: blur(6px);
 }
 
+
 .guest-row {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.6rem;
 }
 
+
 .guest-field {
   flex: 1;
   text-align: left;
 }
 
+
 .guest-field--full {
   flex: 1 1 100%;
 }
+
 
 .guest-label {
   display: block;
@@ -1003,6 +1516,7 @@ body {
   font-weight: 600;
 }
 
+
 .guest-input {
   width: 100%;
   padding: 0.75rem 0.9rem;
@@ -1014,22 +1528,26 @@ body {
   text-transform: uppercase;
 }
 
+
 .guest-input:focus {
   outline: none;
   border-color: #343d23;
   box-shadow: 0 0 0 0.06rem rgba(52, 61, 35, 0.4);
 }
 
+
 .guest-textarea {
   resize: vertical;
   min-height: 5rem;
 }
+
 
 .guest-options {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
+
 
 .guest-option {
   display: inline-flex;
@@ -1041,12 +1559,15 @@ body {
   text-transform: uppercase;
 }
 
+
 .guest-option input {
   width: 1rem;
   height: 1rem;
 }
 
+
 /* кнопка отправки — уменьшенная */
+
 
 .guest-submit-btn {
   display: inline-flex;
@@ -1066,26 +1587,45 @@ body {
   transition: all 0.3s ease;
 }
 
+
 .guest-submit-btn:hover {
   opacity: 0.7;
   transform: translateY(-0.06rem);
 }
+
+/* entrance animation for guest form button */
+.section--guest-form .guest-submit-btn {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+  transition-delay: 0.35s;
+}
+
+.section--guest-form.is-visible .guest-submit-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 
 @media (max-width: 768px) {
   .guest-form {
     padding: 1.75rem 1.4rem 2rem;
   }
 
+
   .guest-row {
     flex-direction: column;
   }
 }
 
+
 /* ===== FOOTER BAR ONLY ===== */
+
 
 .section--footer-image {
   background-color: #161013;
 }
+
 
 .footer-bar {
   height: calc(45vh / 2);
@@ -1095,12 +1635,14 @@ body {
   justify-content: center;
 }
 
+
 .footer-credit-link {
   display: inline-flex;
   align-items: center;
   gap: 1.04rem; /* было 0.8rem * 1.3 */
   text-decoration: none;
 }
+
 
 /* увеличиваем текст в 1.3 раза */
 .footer-credit-text {
@@ -1110,6 +1652,7 @@ body {
   text-transform: uppercase;
   color: #f5f5f5;
 }
+
 
 /* svg иконка того же цвета и масштаба, что текст */
 .footer-telegram-icon {
@@ -1121,84 +1664,102 @@ body {
   color: #f5f5f5;
 }
 
+
 .footer-telegram-icon .design-authors__icon {
   width: 100%;
   height: 100%;
   fill: currentColor; /* берёт цвет от .footer-telegram-icon */
 }
 
+
 /* ===========================
    HERO
    =========================== */
+
 
 @media (max-width: 1024px) {
   .hero-inner {
     max-width: 80%;
   }
 
+
   .hero {
     padding: 4vh 4vw 8vh;
   }
+
 
   .hero-title-top {
     font-size: 10vh;
     margin-bottom: 6vh;
   }
 
+
   .hero-row {
     gap: 2vw;
   }
+
 
   .hero-photo {
     max-width: 18vw;
     box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
   }
 
+
   .hero-date {
     font-size: 7.5vh;
   }
+
 
   .hero-names {
     font-size: 5.8vh;
     margin-top: 7vh;
   }
 
+
   .hero-decor-line img {
     max-width: 0.9vw;
   }
 }
+
 
 @media (max-width: 900px) {
   .hero-inner {
     max-width: 85%;
   }
 
+
   .hero {
     padding: 3vh 3vw 7vh;
   }
+
 
   .hero-title-top {
     font-size: 9vh;
     margin-bottom: 5vh;
   }
 
+
   .hero-photo {
     max-width: 20vw;
   }
 
+
   .hero-date {
     font-size: 7vh;
   }
+
 
   .hero-names {
     font-size: 5.5vh;
     margin-top: 6vh;
   }
 
+
   .hero-decor-line img {
     max-width: 1vw;
   }
 }
+
 
 @media (max-width: 768px) {
   .hero {
@@ -1206,14 +1767,17 @@ body {
     max-block-size: none;
   }
 
+
   .hero-inner {
     max-width: 97%;
   }
+
 
   .hero-title-top {
     font-size: 8.5vh;
     margin-bottom: 4.5vh;
   }
+
 
   .hero-row {
     grid-template-columns: 1.2fr auto 1.2fr;
@@ -1221,18 +1785,22 @@ body {
     margin-bottom: 3.5vh;
   }
 
+
   .hero-photo {
     max-width: 25vw;
     box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
   }
 
+
   .hero-photo-left {
     transform: rotate(-11deg) translateY(-8%);
   }
 
+
   .hero-photo-right {
     transform: rotate(11deg) translateY(6%);
   }
+
 
   .hero-date {
     font-size: 5.5vh;
@@ -1240,16 +1808,19 @@ body {
     gap: 0.7vh;
   }
 
+
   .hero-names {
     font-size: 5.2vh;
     margin-top: 5.5vh;
     letter-spacing: 0.32em;
   }
 
+
   .hero-decor-line img {
     max-width: 1.2vw;
   }
 }
+
 
 @media (max-width: 548px) {
   .hero {
@@ -1257,25 +1828,30 @@ body {
     max-block-size: none;
   }
 
+
   .hero-title-top {
     font-size: 8vh;
     margin-bottom: 4vh;
   }
 
+
   .hero-row {
     margin-bottom: 3.5vh;
   }
+
 
   .hero-photo {
     max-width: 26vw;
     box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
   }
 
+
   .hero-date {
     font-size: 5vh;
     letter-spacing: 0.22em;
     gap: 0.4vh;
   }
+
 
   .hero-names {
     font-size: 5vh;
@@ -1284,31 +1860,37 @@ body {
   }
 }
 
+
 @media (max-width: 478px) {
   .hero {
     padding: 3vh 1vw 3vh;
     max-block-size: none;
   }
 
+
   .hero-title-top {
     font-size: 6vh;
     margin-bottom: 3vh;
   }
 
+
   .hero-row {
     margin-bottom: 3.5vh;
   }
+
 
   .hero-photo {
     max-width: 29vw;
     box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
   }
 
+
   .hero-date {
     font-size: 4vh;
     letter-spacing: 0.22em;
     gap: 0.4vh;
   }
+
 
   .hero-names {
     font-size: 4vh;
@@ -1317,34 +1899,48 @@ body {
   }
 }
 
+
+@media (max-width: 390px) {
+  .hero-names {
+  letter-spacing: 0.15em;
+}
+}
+
+
 /* ===========================
    INTRO TEXT + ФОТО
    =========================== */
+
 
 @media (max-width: 930px) {
   .intro-text-block {
     padding: 70px 20px;
   }
 
+
   .intro-main-photo {
     max-width: 50%;
   }
 }
+
 
 @media (max-width: 650px) {
   .intro-text-block {
     padding: 50px 20px;
   }
 
+
   .intro-main-photo {
     max-width: 100%;
   }
+
 
   .intro-reply-btn {
     margin-top: 20px;
     margin-bottom: 30px;
     padding: 9px 17px;
   }
+
 
   .intro-photos-row::before,
   .intro-photos-row::after {
@@ -1355,22 +1951,26 @@ body {
     overflow: hidden;
   }
 
+
   .intro-photos-row::before {
     left: -37%;
   }
+
 
   .intro-photos-row::after {
     right: -37%;
   }
 }
 
+
 /* твой пункт 1 — уменьшение текста INTRO TEXT с 520 и ниже */
 @media (max-width: 520px) {
   .intro-main-text {
-    font-size: clamp(1rem, 1.15vw, 1.15rem);
+    font-size: clamp(1.12rem, 1.1vw, 1.2rem);
     line-height: 1.7;
     letter-spacing: 0.12em;
   }
+
 
   .intro-small-title {
     font-size: clamp(1rem, 1.15vw, 1.15rem);
@@ -1379,9 +1979,11 @@ body {
   }
 }
 
+
 /* ===========================
    CALENDAR
    =========================== */
+
 
 /* твой пункт 2:
    календарь поменьше везде, чтобы был воздух сверху/снизу;
@@ -1391,10 +1993,12 @@ body {
     width: min(72vw, 22rem);
   }
 
+
   .section--calendar {
     padding: 8vh 1.25rem;
   }
 }
+
 
 /* 520 и ниже — как было у тебя (только фиксируем явно) */
 @media (max-width: 520px) {
@@ -1403,12 +2007,14 @@ body {
   }
 }
 
+
 /* (Valpolicella...) уменьшить в 1.3 раза с 550 и ниже */
 @media (max-width: 550px) {
   .location-mistral {
     font-size: 1.38rem;
   }
 }
+
 
 /* твой пункт 7 — адаптив круга "КАК ДОБРАТЬСЯ" */
 @media (max-width: 900px) {
@@ -1420,10 +2026,12 @@ body {
     font-size: clamp(0.9rem, 1.4vw, 1.1rem);
   }
 
+
   .location-howto::after {
     height: 28px;
   }
 }
+
 
 @media (max-width: 600px) {
   .location-howto {
@@ -1434,12 +2042,14 @@ body {
     font-size: clamp(0.85rem, 1.2vw, 1rem);
   }
 
+
   .location-howto::after {
     height: 24px;
   }
 }
 
-@media (max-width: 480px) {
+
+@media (max-width: 525px) {
   .location-howto {
     right: 50px;
     bottom: -42px;
@@ -1448,14 +2058,33 @@ body {
     font-size: 0.8rem;
   }
 
+
   .location-howto::after {
     height: 20px;
   }
 }
 
+
+@media (max-width: 420px) {
+  .location-howto {
+    right: 50px;
+    bottom: -42px;
+    width: 25%;
+    border-width: 3px;
+    font-size: 0.8rem;
+  }
+
+
+  .location-howto::after {
+    height: 20px;
+  }
+}
+
+
 /* ===========================
    CELEBRATION — картинки
    =========================== */
+
 
 @media (max-width: 768px) {
   .celebration-photo-desktop { display: none; }
@@ -1465,10 +2094,12 @@ body {
   }
 }
 
+
 /* ===========================
    TIMING / HOTELS / GUEST FORM / LOCATION
    общие отступы и заголовки
    =========================== */
+
 
 @media (max-width: 900px) {
   .section--location,
@@ -1479,6 +2110,7 @@ body {
     padding-block: 100px;
   }
 
+
   .section--location .section-title-large,
   .section--celebration .section-title-large,
   .section--timing-custom .section-title-large,
@@ -1487,6 +2119,7 @@ body {
     font-size: 8vh;
   }
 }
+
 
 @media (max-width: 600px) {
   .section--location,
@@ -1497,6 +2130,7 @@ body {
     padding-block: 80px;
   }
 
+
   .section--location .section-title-large,
   .section--celebration .section-title-large,
   .section--timing-custom .section-title-large,
@@ -1505,14 +2139,17 @@ body {
     font-size: 7vh;
   }
 
+
   .timing-list {
     gap: 38px;
   }
+
 
   .video-line__inner {
     padding: 60px 20px;
   }
 }
+
 
 @media (max-width: 480px) {
   .section--location,
@@ -1523,6 +2160,7 @@ body {
     padding-block: 70px;
   }
 
+
   .section--location .section-title-large,
   .section--celebration .section-title-large,
   .section--timing-custom .section-title-large,
@@ -1532,6 +2170,7 @@ body {
   }
 }
 
+
 /* твой пункт 3 — заголовок HOTELS без сдвига с 650 и меньше */
 @media (max-width: 650px) {
   .section-title-large--hotels {
@@ -1539,23 +2178,28 @@ body {
   }
 }
 
+
 /* ===========================
    COUNTDOWN (COUNTER)
    =========================== */
+
 
 @media (max-width: 600px) {
   .section--countdown {
     height: 50vh;
   }
 
+
   .countdown-grid {
     gap: 12px;
   }
+
 
   .countdown-item {
     padding: 12px 14px;
   }
 }
+
 
 /* твой пункт 6:
    480- и ниже — уменьшить элементы счетчика,
@@ -1566,10 +2210,12 @@ body {
     min-height: 220px;
   }
 
+
   .countdown-inner {
     max-width: 100%;
     padding: 0 10px;
   }
+
 
   .countdown-grid {
     flex-wrap: nowrap;
@@ -1577,15 +2223,18 @@ body {
     gap: 8px;
   }
 
+
   .countdown-item {
     min-width: auto;
     padding: 8px 10px;
   }
 
+
   .countdown-number {
     font-size: 1.4rem;
     letter-spacing: 0.16em;
   }
+
 
   .countdown-unit {
     font-size: 0.7rem;
@@ -1593,15 +2242,18 @@ body {
   }
 }
 
+
 /* ===========================
    WISHES (VIDEO LINE)
    =========================== */
+
 
 @media (max-width: 768px) {
   .note {
     gap: 12px;
   }
 }
+
 
 /* твой пункт 5:
    550- и ниже — уменьшить шрифт и увеличить высоту секции */
@@ -1610,20 +2262,24 @@ body {
     height: 90vh;
   }
 
+
   .video-line__inner {
     inset: 8vh 0 10vh;
     padding: 3.5rem 1.5rem;
   }
 
+
   .video-line__title.section-title-large {
     font-size: 6vh;
   }
+
 
   .note-number {
     width: 2.5rem;
     height: 2.5rem;
     font-size: 0.8rem;
   }
+
 
   .note-text,
   .payment-text {
@@ -1633,27 +2289,33 @@ body {
   }
 }
 
+
 /* ===========================
    GUEST FORM
    =========================== */
+
 
 @media (max-width: 768px) {
   .guest-form {
     padding: 1.75rem 1.4rem 2rem;
   }
 
+
   .guest-row {
     flex-direction: column;
   }
+
 
   .guest-options--inline {
     flex-direction: column;
   }
 }
 
+
 /* ===========================
    INTRO-SCREEN
    =========================== */
+
 
 @media (max-width: 1024px) {
   .intro-bg {
@@ -1661,21 +2323,25 @@ body {
     background-position: 80% top;
   }
 
+
   .intro-envelope {
     width: min(500px, 80vw);
     transform: translateX(0) translateY(80px);
   }
 
+
   .intro-card {
     left: 10%;
     right: 10%;
     top: 20%;
-    transform: translateY(70%);
+    transform: translateY(50%);
   }
+
 
   .intro-screen.card-out .intro-card {
     transform: translateY(20%);
   }
+
 
   .intro-tap-hint {
     left: 60%;
@@ -1683,15 +2349,18 @@ body {
     transform: translateX(-50%) rotate(-13deg);
   }
 
+
   .intro-tap-text {
     font-size: 16px;
     letter-spacing: 0.18em;
   }
 
+
   .intro-hand-icon {
     width: 42px;
   }
 }
+
 
 @media (max-width: 768px) {
   .intro-bg {
@@ -1699,21 +2368,25 @@ body {
     background-position: right top;
   }
 
+
   .intro-envelope {
     width: min(420px, 90vw);
     transform: translateX(0) translateY(40px);
   }
 
+
   .intro-card {
     left: 10%;
     right: 10%;
     top: 20%;
-    transform: translateY(80%);
+    transform: translateY(60%);
   }
+
 
   .intro-screen.card-out .intro-card {
     transform: translateY(25%);
   }
+
 
   .intro-tap-hint {
     left: 60%;
@@ -1722,15 +2395,18 @@ body {
     gap: 6px;
   }
 
+
   .intro-tap-text {
     font-size: 18px;
     letter-spacing: 0.16em;
   }
 
+
   .intro-hand-icon {
     width: 56px;
   }
 }
+
 
 @media (max-width: 480px) {
   .intro-bg {
@@ -1738,21 +2414,25 @@ body {
     background-position: right 20%;
   }
 
+
   .intro-envelope {
     width: 90vw;
     transform: translateX(0) translateY(20px);
   }
 
+
   .intro-card {
     left: 8%;
     right: 8%;
     top: 20%;
-    transform: translateY(85%);
+    transform: translateY(60%);
   }
+
 
   .intro-screen.card-out .intro-card {
     transform: translateY(30%);
   }
+
 
   .intro-tap-hint {
     left: 60%;
@@ -1761,15 +2441,18 @@ body {
     gap: 4px;
   }
 
+
   .intro-tap-text {
     font-size: 18px;
     letter-spacing: 0.14em;
   }
 
+
   .intro-hand-icon {
     width: 50px;
   }
 }
+
 
 @media (max-width: 642px) {
   .intro-bg {
@@ -1778,6 +2461,7 @@ body {
     background-position: center center;
   }
 }
+
 
 @media (max-width: 452px) {
   .intro-tap-hint {
