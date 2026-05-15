@@ -223,77 +223,86 @@
       </div>
     </section>
 
-    <form class="guest-form">
-  <div class="guest-row">
-    <div class="guest-field">
-      <label class="guest-label" for="guest-first-name">Имя</label>
-      <input type="text" id="guest-first-name" name="first_name" class="guest-input" required>
-    </div>
+    <!-- GUEST FORM -->
+    <section class="section section--guest-form" id="rsvp">
+      <div class="section__inner guest-inner">
+        <div class="section-divider-line"></div>
 
-    <div class="guest-field">
-      <label class="guest-label" for="guest-last-name">Фамилия</label>
-      <input type="text" id="guest-last-name" name="last_name" class="guest-input" required>
-    </div>
-  </div>
+        <h2 class="section-title-large">Guest Form</h2>
 
-  <div class="guest-row">
-    <div class="guest-field guest-field--full">
-      <label class="guest-label">Будете ли вы присутствовать на свадьбе?</label>
-      <div class="guest-options guest-options--inline">
-        <label class="guest-option">
-          <input type="radio" name="attendance" value="yes" required>
-          <span>Да</span>
-        </label>
-        <label class="guest-option">
-          <input type="radio" name="attendance" value="no">
-          <span>Нет</span>
-        </label>
+        <form class="guest-form">
+          <div class="guest-row">
+            <div class="guest-field">
+              <label class="guest-label" for="guest-first-name">Имя</label>
+              <input type="text" id="guest-first-name" name="first_name" class="guest-input" required>
+            </div>
+
+            <div class="guest-field">
+              <label class="guest-label" for="guest-last-name">Фамилия</label>
+              <input type="text" id="guest-last-name" name="last_name" class="guest-input" required>
+            </div>
+          </div>
+
+          <div class="guest-row">
+            <div class="guest-field guest-field--full">
+              <label class="guest-label">Будете ли вы присутствовать на свадьбе?</label>
+              <div class="guest-options guest-options--inline">
+                <label class="guest-option">
+                  <input type="radio" name="attendance" value="yes" required>
+                  <span>Да</span>
+                </label>
+                <label class="guest-option">
+                  <input type="radio" name="attendance" value="no">
+                  <span>Нет</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="guest-row">
+            <div class="guest-field">
+              <label class="guest-label">Являетесь ли вы вегетарианцем?</label>
+              <div class="guest-options">
+                <label class="guest-option">
+                  <input type="radio" name="food_preference" value="vegetarian" required>
+                  <span>Да</span>
+                </label>
+                <label class="guest-option">
+                  <input type="radio" name="food_preference" value="regular">
+                  <span>Нет</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="guest-field">
+              <label class="guest-label">Будет ли с вами ребёнок?</label>
+              <div class="guest-options">
+                <label class="guest-option">
+                  <input type="radio" name="child" value="yes" required>
+                  <span>Да</span>
+                </label>
+                <label class="guest-option">
+                  <input type="radio" name="child" value="no">
+                  <span>Нет</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="guest-row">
+            <div class="guest-field guest-field--full">
+              <label class="guest-label" for="guest-allergy">
+                Есть ли у вас аллергия на что-либо из продуктов?
+              </label>
+              <textarea id="guest-allergy" name="message" class="guest-input guest-textarea" rows="3"
+                placeholder="При необходимости укажите продукты, которые вам нельзя"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="guest-submit-btn">отправить</button>
+        </form>
       </div>
-    </div>
-  </div>
-
-  <div class="guest-row">
-    <div class="guest-field">
-      <label class="guest-label">Являетесь ли вы вегетарианцем?</label>
-      <div class="guest-options">
-        <label class="guest-option">
-          <input type="radio" name="food_preference" value="vegetarian" required>
-          <span>Да</span>
-        </label>
-        <label class="guest-option">
-          <input type="radio" name="food_preference" value="regular">
-          <span>Нет</span>
-        </label>
-      </div>
-    </div>
-
-    <div class="guest-field">
-      <label class="guest-label">Будет ли с вами ребёнок?</label>
-      <div class="guest-options">
-        <label class="guest-option">
-          <input type="radio" name="child" value="yes" required>
-          <span>Да</span>
-        </label>
-        <label class="guest-option">
-          <input type="radio" name="child" value="no">
-          <span>Нет</span>
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="guest-row">
-    <div class="guest-field guest-field--full">
-      <label class="guest-label" for="guest-allergy">
-        Есть ли у вас аллергия на что-либо из продуктов?
-      </label>
-      <textarea id="guest-allergy" name="message" class="guest-input guest-textarea" rows="3"
-        placeholder="При необходимости укажите продукты, которые вам нельзя"></textarea>
-    </div>
-  </div>
-
-  <button type="submit" class="guest-submit-btn">отправить</button>
-</form>
+    </section>
 
     <!-- WISHES -->
     <section class="video-line" id="wishes">
@@ -405,6 +414,6 @@ IBAN: IT09Z0538701647000049463011 Popova Yulia
 
   </div><!-- /.page -->
 
-  <script src="script.js?v=1006"></script>
+  <script src="script.js"></script>
 </body>
 </html>

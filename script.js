@@ -106,10 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== GUEST FORM: отправка на Vercel backend =====
-
   const guestForm = document.querySelector('.guest-form');
   if (guestForm) {
-    // элемент для статуса — добавим ищущим по классу
     let statusEl = document.querySelector('.guest-form-status');
     if (!statusEl) {
       statusEl = document.createElement('div');
@@ -130,16 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(guestForm);
       const payload = {
         form_type: 'rsvp-form',
-        first_name: formData.get('firstName') || '',
-        last_name: formData.get('lastName') || '',
+        first_name: formData.get('first_name') || '',
+        last_name: formData.get('last_name') || '',
         attendance: formData.get('attendance') || '',
-        food_preference: formData.get('veggie') || '',
-        child: formData.get('kids') || '',
-        message: formData.get('allergy') || '',
+        food_preference: formData.get('food_preference') || '',
+        child: formData.get('child') || '',
+        message: formData.get('message') || '',
         event: 'Wedding 19.09.2026',
       };
 
-      // ВСТАВЬ сюда URL своего Vercel backend (API endpoint)
       const BACKEND_URL = 'https://wedding-yulia-francesco-backend.vercel.app/api/send';
 
       fetch(BACKEND_URL, {
