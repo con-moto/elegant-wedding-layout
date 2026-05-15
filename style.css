@@ -735,9 +735,11 @@ body {
 
 /* ===== WISHES (VIDEO LINE) ===== */
 
+/* Добавим явный отступ сверху перед WISHES */
 .video-line {
   position: relative;
   overflow: hidden;
+  margin-top: 3rem; /* НОВОЕ: создаём расстояние от Guest Form */
 }
 
 .video-line__video {
@@ -959,12 +961,6 @@ body {
   padding: 7.5rem 1.25rem 9.5rem; /* было 8.75rem, добавили чуть-чуть */
 }
 
-/* Добавим явный отступ сверху перед WISHES */
-.video-line {
-  position: relative;
-  overflow: hidden;
-  margin-top: 3rem; /* НОВОЕ: создаём расстояние от Guest Form */
-}
 
 .guest-inner {
   display: flex;
