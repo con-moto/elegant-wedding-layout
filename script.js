@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ===== INTRO-SCREEN =====
+    // ===== INTRO-SCREEN + MUSIC =====
   const intro = document.querySelector('.intro-screen');
+  const bgMusic = document.getElementById('bg-music');
 
   if (intro) {
     setTimeout(() => {
@@ -8,6 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
 
     intro.addEventListener('click', () => {
+      // запускаем музыку по клику по интро
+      if (bgMusic) {
+        bgMusic
+          .play()
+          .catch((err) => {
+            console.warn('Музыка не смогла стартовать автоматически:', err);
+          });
+      }
+
       intro.classList.add('hide-hint');
       intro.classList.add('is-hidden');
 
