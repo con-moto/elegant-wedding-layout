@@ -800,7 +800,7 @@ body {
   transform: translate(140px, -90px);
   opacity: 0;
   transition: transform 2.2s ease-out, opacity 2.2s ease-out;
-  transition-delay: 0.45s;
+  transition-delay: 0.7s;
 }
 
 .section--location.is-visible .location-howto {
