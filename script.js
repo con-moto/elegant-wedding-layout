@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== SCROLL REVEAL (SECTIONS) =====
   const initScrollReveal = () => {
     const revealSections = document.querySelectorAll(
-      '.hero, .intro-text-block, .section--calendar, .section--location, .section--celebration, .section--countdown, .section--timing-custom, .section--guest-form, .section--hotels'
+      '.hero, .intro-text-block, .section--calendar, .section--location, .section--celebration, .section--countdown, .section--timing-custom, .section--guest-form, .section--hotels, .section--wishes'
     );
 
     if (!revealSections.length) return;
